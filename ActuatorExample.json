@@ -1,0 +1,118 @@
+{
+  "sensors": [
+    {
+      "label": "condition_1",
+      "name": "condition",
+      "version": "1.1.6",
+      "properties": {
+        "condition": "${nodes.stream_1.rawData.stream.value}>23"
+      },
+      "position": [
+        397,
+        329
+      ],
+      "dataTrigger": false,
+      "tickTrigger": true,
+      "timeout": "PT50S"
+    },
+    {
+      "label": "debugDialog_1",
+      "name": "debugDialog",
+      "version": "1.0.2",
+      "position": [
+        646,
+        309
+      ],
+      "dataTrigger": false,
+      "tickTrigger": true,
+      "timeout": "PT50S"
+    },
+    {
+      "label": "debugDialog_2",
+      "name": "debugDialog",
+      "version": "1.0.2",
+      "properties": {
+        "message": "actutor on"
+      },
+      "resource": "test-topic",
+      "sequence": 0,
+      "position": [
+        838,
+        408
+      ],
+      "dataTrigger": false,
+      "tickTrigger": true,
+      "timeout": "PT50S"
+    },
+    {
+      "label": "sendMQTTmessage_1",
+      "name": "sendMQTTmessage",
+      "version": "1.0.4",
+      "properties": {
+        "server": "192.168.0.161",
+        "port": 1883,
+        "message": "{\"message\":\"ActuatorOn\"}",
+        "topic": "test-topic",
+        "protocol": "mqtt"
+      },
+      "resource": "test-topic",
+      "sequence": 0,
+      "position": [
+        630,
+        404
+      ],
+      "dataTrigger": false,
+      "tickTrigger": true,
+      "timeout": "PT50S"
+    },
+    {
+      "label": "stream_1",
+      "name": "stream",
+      "version": "1.0.1",
+      "resource": "test-topic",
+      "position": [
+        154,
+        332
+      ],
+      "dataTrigger": true,
+      "tickTrigger": false,
+      "timeout": "PT50S"
+    }
+  ],
+  "triggers": [
+    {
+      "sourceLabel": "sendMQTTmessage_1",
+      "destinationLabel": "debugDialog_2",
+      "statesTrigger": [
+        "Success"
+      ]
+    },
+    {
+      "sourceLabel": "stream_1",
+      "destinationLabel": "condition_1"
+    },
+    {
+      "sourceLabel": "condition_1",
+      "destinationLabel": "sendMQTTmessage_1",
+      "statesTrigger": [
+        "True"
+      ]
+    },
+    {
+      "sourceLabel": "condition_1",
+      "destinationLabel": "debugDialog_1",
+      "statesTrigger": [
+        "True"
+      ]
+    }
+  ],
+  "name": "ActuatorExample",
+  "user": "test@waylay.io",
+  "createTime": 1641396098756,
+  "lastUpdateTime": 1641396320736,
+  "discoveryTemplate": false,
+  "taskDefaults": {
+    "type": "reactive",
+    "tags": {}
+  }
+}
