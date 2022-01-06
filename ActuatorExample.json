@@ -35,7 +35,6 @@
         "message": "actutor on"
       },
       "resource": "test-topic",
-      "sequence": 0,
       "position": [
         838,
         408
@@ -51,8 +50,8 @@
       "properties": {
         "server": "192.168.0.161",
         "port": 1883,
-        "message": "{\"message\":\"ActuatorOn\"}",
-        "topic": "test-topic",
+        "message": "1",
+        "topic": "inTopic",
         "protocol": "mqtt"
       },
       "resource": "test-topic",
@@ -109,7 +108,7 @@
   "name": "ActuatorExample",
   "user": "test@waylay.io",
   "createTime": 1641396098756,
-  "lastUpdateTime": 1641396320736,
+  "lastUpdateTime": 1641467955080,
   "discoveryTemplate": false,
   "taskDefaults": {
     "type": "reactive",
