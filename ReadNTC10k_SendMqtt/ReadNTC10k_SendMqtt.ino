@@ -36,9 +36,9 @@ float tempMean ;                         /* to calculate the average value from 
 
 //////////
 
-const char* ssid = "inventeaza";
-const char* password =  "robo1234";
-const char* mqttServer = "192.168.0.161";
+const char* ssid = "WifiSSid";
+const char* password =  "WifiPwd";
+const char* mqttServer = "IpAddressMqttTinyAutomator";
 const int mqttPort = 1883;
 #define MQTT_PUB_TEMP "test-topic"
 //const char* mqttUser = "yourInstanceUsername";
